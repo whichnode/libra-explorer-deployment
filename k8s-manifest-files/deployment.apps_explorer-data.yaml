@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: explorer-data
+  name: explorer-data
+  namespace: olfyi-0001
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: explorer-data
+  strategy:
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: explorer-data
+    spec:
+      containers:
+      - env:
+        - name: CLICKHOUSE_HOST
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_HOST
+              name: data-env
+        - name: CLICKHOUSE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_USERNAME
+              name: data-env
+        - name: CLICKHOUSE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_PASSWORD
+              name: data-env
+        - name: CLICKHOUSE_DATABASE
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_DATABASE
+              name: data-env
+        image: ghcr.io/minaxolone/0l-data:bfb7faa004ba11226697fc1dfbcc9de1e8b8a330
+        imagePullPolicy: IfNotPresent
+        name: explorer-data
+        ports:
+        - containerPort: 4000
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: docker-config
+      restartPolicy: Always

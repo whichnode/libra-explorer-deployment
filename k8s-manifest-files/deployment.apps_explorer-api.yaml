@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: explorer-api
+  name: explorer-api
+  namespace: olfyi-0001
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: explorer-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: explorer-api
+    spec:
+      containers:
+      - env:
+        - name: NODE_ENV
+          value: production
+        - name: ROLES
+          value: api
+        - name: CACHE_ENABLED
+          value: "true"
+        - name: DATA_API_HOST
+          value: https://data.0l.fyi
+        - name: S3_REGION
+          valueFrom:
+            secretKeyRef:
+              key: S3_REGION
+              name: api-env
+        - name: S3_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              key: S3_ENDPOINT
+              name: api-env
+        - name: S3_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              key: S3_ACCESS_KEY_ID
+              name: api-env
+        - name: S3_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: S3_SECRET_ACCESS_KEY
+              name: api-env
+        - name: S3_BUCKET
+          valueFrom:
+            secretKeyRef:
+              key: S3_BUCKET
+              name: api-env
+        - name: S3_STORAGE_CLASS
+          valueFrom:
+            secretKeyRef:
+              key: S3_STORAGE_CLASS
+              name: api-env
+        - name: CLICKHOUSE_HOST
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_HOST
+              name: api-env
+        - name: CLICKHOUSE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_USERNAME
+              name: api-env
+        - name: CLICKHOUSE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_PASSWORD
+              name: api-env
+        - name: CLICKHOUSE_PORT
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_PORT
+              name: api-env
+        - name: CLICKHOUSE_DATABASE
+          valueFrom:
+            secretKeyRef:
+              key: CLICKHOUSE_DATABASE
+              name: api-env
+        - name: REDIS_HOST
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_HOST
+              name: api-env
+        - name: REDIS_PORT
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_PORT
+              name: api-env
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: DATABASE_URL
+              name: api-env
+        - name: NATS_SERVERS
+          valueFrom:
+            secretKeyRef:
+              key: NATS_SERVERS
+              name: api-env
+        image: ghcr.io/whichnode/libra-explorer/api:c2aebf50c9c4c089b9c464af864a2bf7b1c68cb5
+        imagePullPolicy: IfNotPresent
+        name: explorer-api
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: docker-config
+      restartPolicy: Always

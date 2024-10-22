@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: explorer-bull-board
+  name: explorer-bull-board
+  namespace: olfyi-0001
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: explorer-bull-board
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: explorer-bull-board
+    spec:
+      containers:
+      - env:
+        - name: NODE_ENV
+          value: production
+        - name: PORT
+          value: "80"
+        - name: QUEUE_NAMES
+          value: ol-version,ol-version-batch,ol-parquet-producer,ol-clickhouse-ingestor,stats,wallet-subscription,node-watcher,expired-transactions
+        - name: REDIS_HOST
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_HOST
+              name: api-env
+        - name: REDIS_PORT
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_PORT
+              name: api-env
+        image: ghcr.io/0lnetworkcommunity/explorer/bull-board:f3a2547
+        imagePullPolicy: IfNotPresent
+        name: explorer-bull-board
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: docker-config
+      restartPolicy: Always

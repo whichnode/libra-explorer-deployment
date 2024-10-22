@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rpc-load-balancer
+  name: rpc-load-balancer
+  namespace: olfyi-0001
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rpc-load-balancer
+  strategy:
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: rpc-load-balancer
+    spec:
+      containers:
+      - image: ghcr.io/minaxolone/rpc-load-balancer:d7c3173
+        imagePullPolicy: IfNotPresent
+        name: rpc-load-balancer
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: docker-config
+      restartPolicy: Always

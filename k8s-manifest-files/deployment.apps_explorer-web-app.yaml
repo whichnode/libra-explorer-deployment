@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: explorer-web-app
+  name: explorer-web-app
+  namespace: olfyi-0001
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: explorer-web-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: explorer-web-app
+    spec:
+      containers:
+      - image: ghcr.io/whichnode/libra-explorer/web-app:34dbdabd701748666e37a5fcdc02fa0908a77102
+        imagePullPolicy: IfNotPresent
+        name: explorer-web-app
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: docker-config
+      restartPolicy: Always
