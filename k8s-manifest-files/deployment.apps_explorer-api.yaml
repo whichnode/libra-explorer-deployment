@@ -30,6 +30,12 @@ spec:
           value: "true"
         - name: DATA_API_HOST
           value: https://data.0l.fyi
+        - name: VALIDATOR_HANDLES_URL
+          value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/validator-handle.json
+        - name: COMMUNITY_WALLETS_URL
+          value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/community-wallets.json
+        - name: KNOWN_ADDRESSES_URL
+          value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/known-addresses.json
         - name: S3_REGION
           valueFrom:
             secretKeyRef:
