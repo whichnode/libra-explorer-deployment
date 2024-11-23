@@ -38,7 +38,7 @@ spec:
             secretKeyRef:
               key: REDIS_PORT
               name: api-env
-        image: ghcr.io/0lnetworkcommunity/explorer/bull-board:f3a2547
+        image: ghcr.io/whichnode/libra-explorer/bull-board:82be75e812489c9a308f3c41dd340ff50694cf77
         imagePullPolicy: IfNotPresent
         name: explorer-bull-board
         ports:
