@@ -121,6 +121,14 @@ spec:
             secretKeyRef:
               key: NATS_SERVERS
               name: api-env
+        - name: CACHE_ENABLED
+          value: "true"
+        - name: VALIDATOR_HANDLES_URL
+          value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/validator-handle.json
+        - name: COMMUNITY_WALLETS_URL
+          value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/community-wallets.json
+        - name: KNOWN_ADDRESSES_URL
+          value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/known-addresses.json
         image: ghcr.io/whichnode/libra-explorer/api:4a97bb34b7f6d8a68a799325bf790ffee03de979
         imagePullPolicy: IfNotPresent
         name: explorer-worker
