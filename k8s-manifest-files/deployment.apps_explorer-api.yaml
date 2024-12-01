@@ -111,7 +111,7 @@ spec:
             secretKeyRef:
               key: NATS_SERVERS
               name: api-env
-        image: ghcr.io/whichnode/libra-explorer/api:0ab7fd63b582e960fb06d29efe52b19af7bc1b11
+        image: ghcr.io/whichnode/libra-explorer/api:563f9d45e246d3b5ad2ee4f64b60b2b7bc6540a5
         imagePullPolicy: IfNotPresent
         name: explorer-api
         ports:
