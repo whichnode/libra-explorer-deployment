@@ -129,7 +129,7 @@ spec:
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/community-wallets.json
         - name: KNOWN_ADDRESSES_URL
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/known-addresses.json
-        image: ghcr.io/whichnode/libra-explorer/api:4a97bb34b7f6d8a68a799325bf790ffee03de979
+        image: ghcr.io/whichnode/libra-explorer/api:4bb935c1357760ecf00081aa9a6e832a9513d797
         imagePullPolicy: IfNotPresent
         name: explorer-worker
         volumeMounts:
