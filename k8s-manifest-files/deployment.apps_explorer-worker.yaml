@@ -123,6 +123,8 @@ spec:
               name: api-env
         - name: CACHE_ENABLED
           value: "true"
+        - name: DATA_API_HOST
+          value: https://data.scan.openlibra.world
         - name: RPC_PROVIDER_URL
           value: https://rpc.scan.openlibra.world
         - name: VALIDATOR_HANDLES_URL
