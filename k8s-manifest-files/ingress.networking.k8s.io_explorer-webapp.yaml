@@ -9,7 +9,7 @@ metadata:
   namespace: olfyi-0001
 spec:
   rules:
-  - host: 0l.fyi
+  - host: scan.openlibra.world
     http:
       paths:
       - backend:
@@ -21,5 +21,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - 0l.fyi
+    - scan.openlibra.world
     secretName: explorer-web-app-tls

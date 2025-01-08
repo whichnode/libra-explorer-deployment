@@ -29,7 +29,7 @@ spec:
         - name: CACHE_ENABLED
           value: "true"
         - name: DATA_API_HOST
-          value: https://data.0l.fyi
+          value: https://data.scan.openlibra.world
         - name: VALIDATOR_HANDLES_URL
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/validator-handle.json
         - name: COMMUNITY_WALLETS_URL

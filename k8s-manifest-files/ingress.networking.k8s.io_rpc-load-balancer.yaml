@@ -9,7 +9,7 @@ metadata:
   namespace: olfyi-0001
 spec:
   rules:
-  - host: rpc.0l.fyi
+  - host: rpc.scan.openlibra.world
     http:
       paths:
       - backend:
@@ -21,5 +21,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - rpc.0l.fyi
+    - rpc.scan.openlibra.world
     secretName: rpc-load-balancer-tls

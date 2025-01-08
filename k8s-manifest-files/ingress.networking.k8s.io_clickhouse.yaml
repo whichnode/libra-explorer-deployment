@@ -9,7 +9,7 @@ metadata:
   namespace: olfyi-0001
 spec:
   rules:
-  - host: db.0l.fyi
+  - host: db.scan.openlibra.world
     http:
       paths:
       - backend:
@@ -21,5 +21,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - db.0l.fyi
+    - db.scan.openlibra.world
     secretName: clickhouse-tls
