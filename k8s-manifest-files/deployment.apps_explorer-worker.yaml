@@ -123,13 +123,15 @@ spec:
               name: api-env
         - name: CACHE_ENABLED
           value: "true"
+        - name: RPC_PROVIDER_URL
+          value: https://rpc.scan.openlibra.world
         - name: VALIDATOR_HANDLES_URL
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/validator-handle.json
         - name: COMMUNITY_WALLETS_URL
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/community-wallets.json
         - name: KNOWN_ADDRESSES_URL
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/known-addresses.json
-        image: ghcr.io/whichnode/libra-explorer/api:4bb935c1357760ecf00081aa9a6e832a9513d797
+        image: ghcr.io/whichnode/libra-explorer/api:cc51184c4aa3c2c4c89733d5c42e8bcfb4a86c4c
         imagePullPolicy: IfNotPresent
         name: explorer-worker
         volumeMounts:

@@ -28,6 +28,8 @@ spec:
           value: api
         - name: CACHE_ENABLED
           value: "true"
+        - name: RPC_PROVIDER_URL
+          value: https://rpc.scan.openlibra.world
         - name: DATA_API_HOST
           value: https://data.scan.openlibra.world
         - name: VALIDATOR_HANDLES_URL
@@ -111,7 +113,7 @@ spec:
             secretKeyRef:
               key: NATS_SERVERS
               name: api-env
-        image: ghcr.io/whichnode/libra-explorer/api:4bb935c1357760ecf00081aa9a6e832a9513d797
+        image: ghcr.io/whichnode/libra-explorer/api:cc51184c4aa3c2c4c89733d5c42e8bcfb4a86c4c
         imagePullPolicy: IfNotPresent
         name: explorer-api
         ports:
