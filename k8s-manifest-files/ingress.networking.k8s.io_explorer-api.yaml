@@ -23,3 +23,29 @@ spec:
   - hosts:
     - api.scan.openlibra.world
     secretName: explorer-api-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: olfyi-0001-redirect@kubernetescrd
+  name: explorer-api2
+  namespace: olfyi-0001
+spec:
+  rules:
+  - host: api.scan.openlibra.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: explorer-api
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - api.scan.openlibra.io
+    secretName: explorer-api-tls2
