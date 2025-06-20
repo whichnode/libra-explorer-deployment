@@ -29,9 +29,9 @@ spec:
         - name: CACHE_ENABLED
           value: "true"
         - name: RPC_PROVIDER_URL
-          value: https://rpc.scan.openlibra.world
+          value: https://rpc.scan.openlibra.io
         - name: DATA_API_HOST
-          value: https://data.scan.openlibra.world
+          value: https://data.scan.openlibra.io
         - name: VALIDATOR_HANDLES_URL
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/validator-handle.json
         - name: COMMUNITY_WALLETS_URL
