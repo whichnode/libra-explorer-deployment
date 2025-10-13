@@ -6,7 +6,7 @@ metadata:
   name: rpc-load-balancer
   namespace: olfyi-0001
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: rpc-load-balancer
