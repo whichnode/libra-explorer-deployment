@@ -6,7 +6,7 @@ metadata:
   name: explorer-api
   namespace: olfyi-0001
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: explorer-api
@@ -113,7 +113,7 @@ spec:
             secretKeyRef:
               key: NATS_SERVERS
               name: api-env
-        image: ghcr.io/whichnode/libra-explorer/api:4870d610d3a94997396125361f2f33e94afbd08a
+        image: ghcr.io/whichnode/libra-explorer/api:c647ba009b38f5c562aaca7a6622d0583423457b
         imagePullPolicy: IfNotPresent
         name: explorer-api
         ports:

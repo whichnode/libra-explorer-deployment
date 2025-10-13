@@ -6,7 +6,7 @@ metadata:
   name: explorer-web-app
   namespace: olfyi-0001
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: explorer-web-app

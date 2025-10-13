@@ -6,7 +6,7 @@ metadata:
   name: explorer-worker
   namespace: olfyi-0001
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: explorer-worker
@@ -133,7 +133,7 @@ spec:
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/community-wallets.json
         - name: KNOWN_ADDRESSES_URL
           value: https://raw.githubusercontent.com/0LNetworkCommunity/v7-addresses/refs/heads/main/known-addresses.json
-        image: ghcr.io/whichnode/libra-explorer/api:4870d610d3a94997396125361f2f33e94afbd08a
+        image: ghcr.io/whichnode/libra-explorer/api:c647ba009b38f5c562aaca7a6622d0583423457b
         imagePullPolicy: IfNotPresent
         name: explorer-worker
         volumeMounts:
