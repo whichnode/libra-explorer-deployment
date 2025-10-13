@@ -12,7 +12,7 @@ spec:
       app: rpc-load-balancer
   strategy:
     rollingUpdate:
-      maxSurge: 3
+      maxSurge: 2
       maxUnavailable: 0
     type: RollingUpdate
   template:
